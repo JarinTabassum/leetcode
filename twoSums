@@ -1,0 +1,41 @@
+/* Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+Example 2:
+
+Input: nums = [3,2,4], target = 6
+Output: [1,2]
+Example 3:
+
+Input: nums = [3,3], target = 6
+Output: [0,1] */
+
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        for (int i = 0; i < nums.length; i++) {
+            int diff = target - nums[i];
+            //here in diff we find the difference between the target and the first array element, if the difference matches with the second array element we will get the answer is correct
+//according to input one the diff will be 9-2=7 and second element=7 so 2+7=9  (so the approach is 9-2=7)
+            // Iterate through the array again starting from the second element
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] == diff) {
+                    return new int[]{i, j}; //as we cant return two elements at a time,thats why we made an array of it
+                }
+            }
+        }
+        
+        // If no solution is found, return an empty array
+        return new int[0];
+    }
+}
